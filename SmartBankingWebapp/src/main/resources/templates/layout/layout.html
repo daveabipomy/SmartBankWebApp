@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+    <head th:replace="fragments/header :: header">
+        <title>Header</title>
+    </head>
+
+    <body style="background-color:#D3D3D3;">
+        <!--        <div th:replace="fragments/header :: header"></div>-->
+        <div class="container-fluid" th:replace="fragments/navigation :: navigation"></div>
+
+        <div class="container" id="mainContent">
+
+            <div class="row py-3">
+<!--                <div class="jumbotron text-center">-->
+                <div class="col-md-10">
+                    <div layout:fragment="content" style="background-color:#C0C0C0;"></div>
+                </div>
+<!--                </div>-->
+                <div class="col-md-2">
+                    <div th:replace="fragments/sidebar :: sidebar"></div>
+                </div>
+
+
+        </div>
+
+        <div th:replace="fragments/footer :: footer"></div>
+        </div>
+    </body>
+
+</html>

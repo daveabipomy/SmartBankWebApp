@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml"  layout:decorator="layout/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+
+    <meta charset="UTF-8">
+    <title>New Customer Request Form</title>
+    <link rel="stylesheet" href="/bootstrap.min.css" media="screen"/>
+</head>
+<body >
+<div layout:fragment="content" style="background-color:#C0C0C0;">
+    <center>
+<form th:action="@{/register}" method="post">
+    <div class="col-md-6 col-md-offset-3">
+    <div class="form-group">
+        <label for="accountnumber">Account Number</label>:
+        <input type="text"
+               id="accountnumber"
+               name="accountnumber"
+               class="form-control"
+               autofocus="autofocus"
+               placeholder="Account number">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>:
+        <input type="text"
+               id="email"
+               name="email"
+               class="form-control"
+               placeholder="Email">
+    </div>
+
+        <div class="form-group">
+            <label for="cemail">Confirmation Email</label>:
+            <input type="text"
+                   id="cemail"
+                   name="cemail"
+                   class="form-control"
+                   autofocus="autofocus"
+                   placeholder="Confirmation Email">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>:
+            <input type="password"
+                   id="password"
+                   name="password"
+                   class="form-control"
+                   placeholder="Password">
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <input type="submit"
+                           name="login-submit"
+                           id="login-submit"
+                           class="form-control btn btn-info"
+                           value="Register">
+                </div>
+            </div>
+        </div>
+
+
+        <span th:utext="${failureMessage}"></span>
+        <span th:utext="${successMessage}"></span>
+        <span th:utext="${approvalMessage}"></span>
+        <span th:utext="${emailMessage}"></span>
+
+        <span th:utext="${logMessage}"></span><a class="nav-link" href="/login">Log In</a>
+
+
+    </div>
+    </form>
+    </center>
+</div>
+</body>
+</html>

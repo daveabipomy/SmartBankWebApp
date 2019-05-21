@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="/bootstrap.min.css" media="screen"/>
+    <style>
+        .navigation-order{
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="fragments/header :: header">...</div>
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>User Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="accounts : ${accountList}">
+        <td th:text="${accounts.id}">1</td>
+        <td th:text="${accounts.email}">Test</td>
+        <td th:text="${accounts.name}">Test</td>
+        <td>
+            <a href="/notesEdit/1" th:href="@{/notesEdit/__${accounts.id}__}">Edit</a>
+            <a href="/notesDelete/1" th:href="@{/notesDelete/__${accounts.id}__}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div th:replace="fragments/footer :: footer">...</div>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout/masterlayout">
+
+<head>
+    <title>Layout</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <style>.carousel-inner > .item > img { width:100%; height:170px; }
+    h4 {
+        color:#696969;
+    }
+    </style>
+
+</head>
+
+<body>
+<div layout:fragment="content">
+    <h1 class="my-4">Welcome to Modern Business</h1>
+    <div class="row" >
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100" style="background-color: #F0F0F0">
+                <h4 class="card-header">Card Title</h4>
+                <div class="card-body" >
+                    <p class="card-text">test Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4" >
+            <div class="card h-100" style="background-color: #F0F0F0">
+                <h4 class="card-header">Card Title</h4>
+                <div class="card-body">
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100" style="background-color: #F0F0F0">
+                <h4 class="card-header">Card Title</h4>
+                <div class="card-body">
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-secondary">Learn More</a>
+<!--                    <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Portfolio Section -->
+    <h2>Portfolio Heading</h2>
+
+    <div class="row">
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+            <div class="card h-100" style="background-color: #F0F0F0">
+                <a href="#"><img class="card-img-top" src="images/banks-in-nigeria.jpg" alt=""></a>
+                <div class="card-body">
+                    <h4>
+                        <a style="color:black" href="#">Project One</a>
+                    </h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+            <div class="card h-100" style="background-color: #F0F0F0">
+                <a href="#"><img class="card-img-top" src="/images/bankimg.png" alt=""></a>
+                <div class="card-body">
+                    <h4 class="card-title" >
+                        <a style="color:black" href="#">Project Two</a>
+                    </h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+            <div class="card h-100" style="background-color: #F0F0F0">
+                <a href="#"><img class="card-img-top" src="/images/banks-in-nigeria.jpg" alt=""></a>
+                <div class="card-body">
+                    <h4 class="text-secondary">
+                        <a style="color:black" href="#">Project Three</a>
+                    </h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+    <!-- /.row -->
+
+    <!-- Features Section -->
+    <br><br>
+    <div class="row">
+        <div class="col-lg-6">
+            <h2>Modern Business Features</h2>
+            <p>The Modern Business template by Start Bootstrap includes:</p>
+            <ul>
+                <li>
+                    <strong>Bootstrap v4</strong>
+                </li>
+                <li>jQuery</li>
+                <li>Font Awesome</li>
+                <li>Working contact form with validation</li>
+                <li>Unstyled page elements for easy customization</li>
+            </ul>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+        </div>
+        <div class="col-lg-6">
+            <img class="img-fluid rounded" src="/images/bankimg.png" alt="">
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <hr>
+
+    <!-- Call to Action Section -->
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+        </div>
+        <div class="col-md-4">
+            <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
+        </div>
+    </div>
+
+</div>
+</div>
+</body>
+</html>
