@@ -42,11 +42,11 @@ public LogInServiceImp logInServiceImp;
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/index","/").permitAll()
+                .antMatchers("/index","/","/smart/atm/**").permitAll()
                 .antMatchers("/about","/service","/location","/contact","/customer","/testhomepage").permitAll()
-                .antMatchers("/afterLogin/manager/**","/manager/**").hasAuthority("Manager")
+                .antMatchers("/afterLogin/manager/**","/manager/**","/transaction/**").hasAuthority("Manager")
                 .antMatchers("/afterLogin/customer/**","/customer/**").hasAuthority("Customer")
-                .antMatchers("/afterLogin/teller/**","/teller/**").hasAuthority("Teller")
+                .antMatchers("/afterLogin/teller/**","/teller/**","/transaction/**").hasAuthority("Teller")
                 .anyRequest().authenticated()
                 .and()
 
@@ -75,7 +75,13 @@ public LogInServiceImp logInServiceImp;
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**","/templates/**");
+                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**","/templates/**",
+                        "/home/abenezer/Desktop/SmartBankWebApp/SmartBankingWebapp/C:/Users/Pomi-dave/Desktop/SmartBankingSystem/BankSystem/**"
+
+
+                );
+
+
     }
 
 

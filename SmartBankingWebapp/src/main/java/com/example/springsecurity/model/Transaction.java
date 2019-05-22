@@ -14,11 +14,9 @@ public class Transaction {
     private double amount;
 
 
-//    @ManyToOne
-    private String fromWho;
 
-//    @ManyToOne
-    private String toWho;
+    @ManyToOne
+    private Account toWho;
 
 
     @ManyToOne(targetEntity = Account.class)
@@ -51,22 +49,6 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public String getFromWho() {
-        return fromWho;
-    }
-
-    public void setFromWho(String fromWho) {
-        this.fromWho = fromWho;
-    }
-
-    public String getToWho() {
-        return toWho;
-    }
-
-    public void setToWho(String toWho) {
-        this.toWho = toWho;
-    }
-
     public Account getAccount() {
         return account;
     }
@@ -81,5 +63,13 @@ public class Transaction {
 
     public void setTeller(Teller teller) {
         this.teller = teller;
+    }
+
+    public Account getToWho() {
+        return toWho;
+    }
+
+    public void setToWho(Account toWho) {
+        this.toWho = toWho;
     }
 }
