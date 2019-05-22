@@ -20,12 +20,11 @@ public class Transaction {
         return transactionId;
     }
 
-    public void setTransactionId(int transactionId) {
-        this.transactionId = transactionId;
-    }
+//    @ManyToOne
+    private String fromWho;
+
     @ManyToOne
     private Account toWho;
-
     public void setToWho(Account toWho) {
         this.toWho = toWho;
     }
@@ -76,5 +75,13 @@ public class Transaction {
 
     public void setTeller(Teller teller) {
         this.teller = teller;
+    }
+
+    public Account getToWho() {
+        return toWho;
+    }
+
+    public void setToWho(Account toWho) {
+        this.toWho = toWho;
     }
 }

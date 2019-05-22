@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorator="layout/teller"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <style>              input.hidden {
+        position: absolute;
+        left: -9999px;
+    }
+
+    #profile-image1 {
+        cursor: pointer;
+
+        width: 100px;
+        height: 100px;
+        border:2px solid #03b1ce ;}
+    .tital{ font-size:16px; font-weight:500;}
+    .bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}	</style>
+</head>
+<body>
+<div layout:fragment="content" style="background-color:#C0C0C0;">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 ">
+
+
+                <h2>Withdraw Form</h2>
+
+
+                <div class="panel-body">
+
+                    <div class="box box-info">
+
+                        <div class="box-body">
+
+                            <form action="#" th:action="@{/transaction/withdraw}" method="post">
+                                <div class="form-group" style="width: 350px">
+                                    <label for="waccountNumber">Account Number</label>
+                                    <input type="text" class="form-control" id="waccountNumber" name="waccountNumber"  placeholder="Customer account number">
+                                </div>
+                                <div class="form-group " style="width: 350px" >
+                                    <label for="wamount">Amount</label>
+                                    <input type="number" class="form-control" name="wamount" id="wamount" placeholder="Withdrawal Amount">
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-7 ">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <!--                        <h4>Customer Profile</h4>-->
+                        <span style="font-size:1.7rem; alignment: center" th:utext="${transactionmessage}"></span></div>
+                    <div class="panel-body">
+
+                        <div class="box box-info">
+
+                            <div class="box-body">
+                                <div class="col-sm-6">
+                                    <div  align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
+
+                                    </div>
+
+                                    <br>
+
+                                    <!-- /input-group -->
+                                </div>
+                                <div class="col-sm-6">
+                                    <!--                                    <h4 style="color:#00b1b1;">Prasad Shankar Huddedar </h4></span>-->
+                                    <textbox style="color:#00b1b1; font-size: large" class="col-sm-7"  th:text="${firstName}"></textbox>
+                                    <textbox style="color:#00b1b1;font-size: large" class="col-sm-7"  th:text="${lastName}"></textbox>
+                                    <!--                                    <span><p>Aspirant</p></span>-->
+                                </div>
+                                <div class="clearfix"></div>
+                                <hr style="margin:5px 0 5px 0;">
+
+
+                                <div class="col-sm-5 col-xs-6 tital " >First Name:</div><div ><textarea placeholder="xxxx" cols="5" rows="1" class="col-sm-7"  th:text="${firstName}"></textarea></div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " >Last Name:</div><div ><textarea placeholder="xxxx" cols="5" rows="1" class="col-sm-7" th:text="${lastName}"></textarea></div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " >Date of Birth:</div><div ><textarea placeholder="xxxx" cols="5" rows="1" class="col-sm-7" th:text="${dateOfBirth}"></textarea></div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " >Phone Number:</div><div ><textarea placeholder="xxxx" cols="5" rows="1" class="col-sm-7" th:text="${phoneNumber}"></textarea></div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " >Account Type:</div><div ><textarea placeholder="xxxx" cols="5" rows="1" class="col-sm-7" th:text="${accountType}"></textarea></div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " >Opening Date:</div><div ><textarea placeholder="xxxx" cols="5" rows="1" class="col-sm-7" th:text="${openingDate}"></textarea></div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " >Closing Date:</div><div ><textarea placeholder="xxxx" cols="5" rows="1" class="col-sm-7" th:text="${closingDate}"></textarea></div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " >Pre Balance:</div><div ><textarea placeholder="xxxx" cols="5" rows="1" class="col-sm-7" th:text="${preBalance}"></textarea></div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " >Current Balance:</div><div ><textarea placeholder="xxxx" cols="5" rows="1" class="col-sm-7" th:text="${balance}"></textarea></div>
+
+
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!--            <div class="col-md-5 ">-->
+
+
+            <!--                <div class="panel-body">-->
+
+            <!--                    <div class="box box-info">-->
+
+            <!--                        <div class="box-body">-->
+
+            <!--                        <form action="#" th:action="@{/transaction/deposit}" method="post">-->
+            <!--                            <div class="form-group" style="width: 350px">-->
+            <!--                                <label for="accountNumber">Account Number</label>-->
+            <!--                                    <input type="text" class="form-control" id="accountNumber" name="accountNumber"  placeholder="Customer account number">-->
+            <!--                                </div>-->
+            <!--                            -->
+            <!--                            <div class="form-group " style="width: 350px" >-->
+            <!--                                <label for="amount">Amount</label>-->
+            <!--                                <input type="number" class="form-control" id="amount" name="amount" placeholder="Deposit Amount">-->
+            <!--                            </div>-->
+
+            <!--                            <button type="submit" class="btn btn-primary">Save</button>-->
+
+            <!--                        <span style="font-size:1.2rem; alignment: center" th:utext="${transactionmessage}"></span>-->
+            <!--                        </form>-->
+
+            <!--                    </div>-->
+            <!--                </div>-->
+
+            <!--                </div>-->
+            <!--            </div>-->
+        </div>
+
+    </div>
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -12,10 +12,27 @@ public class TellerController {
         return "/teller/checkBalance";
     }
 
+    @RequestMapping("/teller-deposit")
+    public String deposit(){
+        return "/teller/deposit";
+    }
+
+    @RequestMapping("/teller-withdraw")
+    public String withdraw(){
+        return "/teller/withdraw";
+    }
+
+
+    @RequestMapping("/teller-transfer")
+    public String transfer(){
+        return "/teller/transfer";
+    }
+
     @RequestMapping("/transactionteller")
     public String transactiont(){
         return "/teller/transaction";
     }
+
 
     @GetMapping("/viewStatement")
     public String viewStatement(){

@@ -73,6 +73,7 @@ public class TransactionServiceImpl {
         account.setBalance(account.getBalance() + amount);
         account.getTransactions().add(transaction);
         accountService.updateBalance(account);
+        return true;
     }
 
     public boolean withdraw(String accountNumber, double amount) {
@@ -101,7 +102,7 @@ public class TransactionServiceImpl {
             transaction.setAmount(amount);
             transaction.setTransactionDate(LocalDate.now());
             transaction.setAccount(account);
-//            transaction.setToWho(toAccountNumber);
+            transaction.setToWho(accountService.findAccount(toAccountNumber));
             transaction.setTransactionType("Transfer");
             transactionRepository.save(transaction);
             account.setBalance(account.getBalance() - amount);

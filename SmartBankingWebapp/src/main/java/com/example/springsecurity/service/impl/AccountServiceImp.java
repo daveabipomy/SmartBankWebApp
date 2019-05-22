@@ -167,8 +167,10 @@ public class AccountServiceImp implements AccountService {
 
     @Override
     public Account findAccount(String accountNumber) {
-        return null;
+        return accountRepostitory.findByAccountNumber(accountNumber);
     }
+
+
 
     public Account updateBalance(Account account)
     {
