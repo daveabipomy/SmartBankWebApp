@@ -25,13 +25,13 @@ public class Transaction {
 
     @ManyToOne
     private Account toWho;
-    public void setToWho(Account toWho) {
-        this.toWho = toWho;
-    }
-
-    public Account getToWho() {
-        return toWho;
-    }
+//    public void setToWho(Account toWho) {
+//        this.toWho = toWho;
+//    }
+//
+//    public Account getToWho() {
+//        return toWho;
+//    }
     @ManyToOne(targetEntity = Account.class)
     private Account account;
     @ManyToOne(targetEntity = Teller.class)
