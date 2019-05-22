@@ -1,9 +1,6 @@
 package com.example.springsecurity.service.impl;
 import com.example.springsecurity.dao.*;
-import com.example.springsecurity.model.Account;
-import com.example.springsecurity.model.Address;
-import com.example.springsecurity.model.Customer;
-import com.example.springsecurity.model.Login;
+import com.example.springsecurity.model.*;
 import com.example.springsecurity.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -46,9 +43,11 @@ public class AccountServiceImp implements AccountService {
     @Autowired
     private EntityManagerFactory entityManagerFactory;
 
+    @Autowired
+    private TellerRepository tellerRepository;
 
 
-//
+
     private Session getSession(){
         Session session = null;
 
@@ -61,7 +60,37 @@ public class AccountServiceImp implements AccountService {
         return session;
     }
 
-        public int register(Login login,Account checkAccount) {
+    public int registerTeller(Login login, Teller teller)
+    {
+        Login userName=checkEmail(login.getUserName());
+
+        if(userName==null)
+        {
+            if(teller.getLogin()==null) {
+                BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+                login.setPassword(bCryptPasswordEncoder.encode(login.getPassword()));
+                Login log = loginRepository.save(login);
+                teller.setLogin(log);
+                Session session = null;
+                session = getSession();
+                session.beginTransaction();
+                session.merge(teller);
+                session.getTransaction().commit();
+                getSession().close();
+                return 1;
+            }
+            return 2;
+        }
+    return  0;
+    }
+
+    public Teller checkTeller(String empid)
+    {
+        return tellerRepository.findByEmployeeId(empid);
+    }
+
+
+    public int registerCustomer(Login login,Account checkAccount) {
 
         Customer customer=customerRepository.findById(checkAccount.getCustomer().getId()).orElse(null);
 
@@ -100,6 +129,8 @@ public class AccountServiceImp implements AccountService {
         Account getAccount=accountRepostitory.findByAccountNumber(accountNumber);
        return  getAccount;
     }
+
+
 
     public Login checkEmail(String userName)
     {

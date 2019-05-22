@@ -1,5 +1,7 @@
 package com.example.springsecurity.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -10,22 +12,31 @@ public class Transaction {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int transactionId;
     private String transactionType;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate transactionDate;
     private double amount;
 
+    public int getTransactionId() {
+        return transactionId;
+    }
 
-//    @ManyToOne
-    private String fromWho;
+    public void setTransactionId(int transactionId) {
+        this.transactionId = transactionId;
+    }
+    @ManyToOne
+    private Account toWho;
 
-//    @ManyToOne
-    private String toWho;
+    public void setToWho(Account toWho) {
+        this.toWho = toWho;
+    }
 
-
+    public Account getToWho() {
+        return toWho;
+    }
     @ManyToOne(targetEntity = Account.class)
     private Account account;
     @ManyToOne(targetEntity = Teller.class)
     private Teller teller;
-
 
     public String getTransactionType() {
         return transactionType;
@@ -49,22 +60,6 @@ public class Transaction {
 
     public void setAmount(double amount) {
         this.amount = amount;
-    }
-
-    public String getFromWho() {
-        return fromWho;
-    }
-
-    public void setFromWho(String fromWho) {
-        this.fromWho = fromWho;
-    }
-
-    public String getToWho() {
-        return toWho;
-    }
-
-    public void setToWho(String toWho) {
-        this.toWho = toWho;
     }
 
     public Account getAccount() {

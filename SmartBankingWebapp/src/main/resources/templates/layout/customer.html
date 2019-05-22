@@ -166,6 +166,83 @@
                 .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-left:solid 1px rgba(255,255,255,0.10); }
             }
         </style>
+        <style>
+            .navbar-nav {
+                width: 100%;
+                text-align: center;
+            }
+
+            .carousel{
+                background: #2f4357;
+                margin-top: 20px;
+            }
+            .carousel-item{
+                text-align: center;
+                min-height: 280px; /* Prevent carousel from being distorted if for some reason image doesn't load */
+            }
+            .bs-example{
+                margin: 20px;
+            }
+
+            .footer-bs {
+                background-color: #3c3d41;
+                padding: 60px 40px;
+                color: rgba(255,255,255,1.00);
+                margin-bottom: 20px;
+                border-bottom-right-radius: 6px;
+                border-top-left-radius: 0px;
+                border-bottom-left-radius: 6px;
+            }
+            .footer-bs .footer-brand, .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { padding:10px 25px; }
+            .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-color: transparent; }
+            .footer-bs .footer-brand h2 { margin:0px 0px 10px; }
+            .footer-bs .footer-brand p { font-size:12px; color:rgba(255,255,255,0.70); }
+
+            .footer-bs .footer-nav ul.pages { list-style:none; padding:0px; }
+            .footer-bs .footer-nav ul.pages li { padding:5px 0px;}
+            .footer-bs .footer-nav ul.pages a { color:rgba(255,255,255,1.00); font-weight:bold; text-transform:uppercase; }
+            .footer-bs .footer-nav ul.pages a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
+            .footer-bs .footer-nav h4 {
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                margin-bottom:10px;
+            }
+
+            .footer-bs .footer-nav ul.list { list-style:none; padding:0px; }
+            .footer-bs .footer-nav ul.list li { padding:5px 0px;}
+            .footer-bs .footer-nav ul.list a { color:rgba(255,255,255,0.80); }
+            .footer-bs .footer-nav ul.list a:hover { color:rgba(255,255,255,0.60); text-decoration:none; }
+
+            .footer-bs .footer-social ul { list-style:none; padding:0px; }
+            .footer-bs .footer-social h4 {
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+            }
+            .footer-bs .footer-social li { padding:5px 4px;}
+            .footer-bs .footer-social a { color:rgba(255,255,255,1.00);}
+            .footer-bs .footer-social a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
+
+            .footer-bs .footer-ns h4 {
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                margin-bottom:10px;
+            }
+            .footer-bs .footer-ns p { font-size:12px; color:rgba(255,255,255,0.70); }
+
+
+            @media (min-width: 768px) {
+                .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-left:solid 1px rgba(255,255,255,0.10); }
+            }
+        </style>
+        <script type="text/javascript">
+
+            $('#myModalR').on('hidden.bs.modal', function() {
+                this.modal('show');
+            });
+        </script>
     </head>
     <body style="background-color:#D3D3D3;">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark" th:fragment="navigation">
@@ -173,7 +250,7 @@
                 <div class="container" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/customer/checkingBalance">Check Balance
+                            <a class="nav-link" href="#myModalCheckBalance" data-toggle="modal">Check Balance
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -193,9 +270,38 @@
                 </div>
                 <p class="align-right" style="white-space: nowrap;">
                     <span><font color="white"> Hello: [[${#httpServletRequest.remoteUser}]]</font></span></p>
+                <input type="hidden" name="username" th:value="${#httpServletRequest.remoteUser}" />
                 <a class="nav-link" href="/app-logout" style="white-space: nowrap;">Sign Out</a>
             </div>
         </nav>
+
+        <div id="myModalCheckBalance" class="modal fade">
+            <div class="modal-dialog modal-login">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form action="/customer/checkingBalance" method="post">
+                            <h3>Please Choose Account Type:</h3>
+                            <br>
+                            <div class="form-group">
+                                <label>Account Type: </label>&nbsp;&nbsp;
+                                <select class="selectpicker" name="accountType">
+                                    <option>-- Select Account Type --</option>
+                                    <option th:value="'Checking'" th:text="Checking"></option>
+                                    <option th:value="'Saving'" th:text="Saving"></option>
+                                </select>
+
+
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-secondary btn-lg btn-block" >Submit</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="container">
             <th:block layout:fragment="content"></th:block>
         </div>

@@ -42,9 +42,9 @@ public LogInServiceImp logInServiceImp;
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/index","/").permitAll()
+                .antMatchers("/index","/","/register").permitAll()
                 .antMatchers("/about","/service","/location","/contact","/customer","/testhomepage").permitAll()
-                .antMatchers("/afterLogin/manager/**","/manager/**").hasAuthority("Manager")
+                .antMatchers("/afterLogin/manager/**","/manager/**","/registerTeller").hasAuthority("Manager")
                 .antMatchers("/afterLogin/customer/**","/customer/**").hasAuthority("Customer")
                 .antMatchers("/afterLogin/teller/**","/teller/**").hasAuthority("Teller")
                 .anyRequest().authenticated()

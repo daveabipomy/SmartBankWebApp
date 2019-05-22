@@ -3,12 +3,16 @@ package com.example.springsecurity.Controller;
 
 import com.example.springsecurity.dao.CustomerRepository;
 import com.example.springsecurity.model.Customer;
+import com.example.springsecurity.model.Transaction;
+import com.example.springsecurity.service.impl.TransactionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +23,9 @@ public class ManagerController {
 
     @Autowired
     CustomerRepository customerRepository;
+
+    @Autowired
+    TransactionServiceImpl transactionService;
 
 
     @RequestMapping("/transactionmanager")
@@ -37,35 +44,50 @@ public class ManagerController {
         return mav;
     }
 
-
-
     @RequestMapping(value = "/approve/{id}/{firstName}",method= RequestMethod.GET)
     public String approve1(@PathVariable Long id,@PathVariable String firstName)
     {
-        System.out.println("testtttttttttt "+id);
-        System.out.println("testtttttttttt "+firstName);
         return  "/Approve";
     }
-
-
-//    @RequestMapping(value = "/customer/{id}/{accountType}",method=RequestMethod.POST)
-//    public String userDetail(@PathVariable("id") Long id,@PathVariable("accountType") String accountType, Model model){
-////        System.out.println(+id);
-////        System.out.println(accountType);
-//        Optional<Customer> customer = customerRepository.findById(id);
-//        model.addAttribute("customerdetail", customer);
-//        return "CustomerDetail";
-//    }
-
     @GetMapping("/empAccount")
     public String empAccount(){
         return "/manager/CreateEmpAcc";
     }
 
-    @GetMapping("/generateStatement")
+    @RequestMapping(value={"/generateStatement"}, method = RequestMethod.GET)
     public String generateStatement(){
         return "/manager/generateStatement";
     }
+
+
+    @RequestMapping(value={"/generateStatement"}, method = RequestMethod.POST)
+    public ModelAndView generateStatementPost(String accountNumber,String startDate,String endDate)
+    {
+//        LocalDate startDate, LocalDate endDate
+        ModelAndView mav=new ModelAndView();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate startD = LocalDate.parse(startDate, formatter);
+        LocalDate endD = LocalDate.parse(endDate, formatter);
+//        LocalDate startDate=LocalDate.of(2019, 4, 1);
+//        LocalDate endDate=LocalDate.of(2019, 5, 31);;
+
+        List<Transaction> transactions=transactionService.generateStatement(accountNumber,startD,endD);
+        mav.addObject("transactions", transactions);
+        mav.setViewName("/manager/generateStatement");
+        return mav;
+
+    }
+
+//    @RequestMapping(value={"/generateStatement"}, method = RequestMethod.GET)
+//    public ModelAndView viewStatement(Model model,HttpServletRequest request){
+//        String username = request.getRemoteUser();
+//        ModelAndView mav=new ModelAndView();
+//        List<Transaction> transactions=transactionService.viewStatement(username);
+//        System.out.println("sizeeeeeeeeeee "+transactions);
+//        mav.addObject("transactions", transactions);
+//        mav.setViewName("/customer/viewStatement");
+//        return mav;
+//    }
 
     @GetMapping("/checkBalance")
     public String checkBalance(){

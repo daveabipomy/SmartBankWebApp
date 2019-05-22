@@ -6,6 +6,7 @@ import com.example.springsecurity.model.Account;
 import com.example.springsecurity.model.Customer;
 import com.example.springsecurity.model.Login;
 //import com.example.springsecurity.model.User;
+import com.example.springsecurity.model.Teller;
 import com.example.springsecurity.service.LogInService;
 import com.example.springsecurity.service.impl.AccountServiceImp;
 import com.example.springsecurity.service.impl.UploadServiceImpl;
@@ -86,7 +87,43 @@ public class AccountController {
         return modelAndView;
     }
 
+    @RequestMapping(value={"/registerTeller"}, method = RequestMethod.GET)
+    public ModelAndView registerteller(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("afterLogin/manager");
+        return modelAndView;
+    }
 
+    @RequestMapping(value = {"/registerTeller"},method=RequestMethod.POST)
+    public  ModelAndView registerTeller(@RequestParam String email, @RequestParam String password,@RequestParam String empid)
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        Teller teller=accountService.checkTeller(empid);
+        if(teller==null)        {
+            modelAndView.addObject("failureMessage", "No teller number like this");
+            modelAndView.setViewName("afterLogin/manager");
+        }
+        else {
+            Login login = new Login();
+            login.setUserName(email);
+            login.setPassword(password);
+            login.setRole("Teller");
+            int approve = accountService.registerTeller(login, teller);
+            if (approve == 1) {
+                modelAndView.addObject("successMessage", "You created your login account successfully");
+                modelAndView.setViewName("afterLogin/manager");
+            } else if (approve == 0) {
+                modelAndView.addObject("errorMessage", "Invalid data");
+                modelAndView.setViewName("afterLogin/manager");
+            }
+            else if(approve==2)
+            {
+                modelAndView.addObject("logMessage", "You already created login account, please login ");
+                modelAndView.setViewName("afterLogin/manager");
+            }
+        }
+        return modelAndView;
+    }
 
     @RequestMapping(value = {"/register"},method=RequestMethod.POST)
     public  ModelAndView register(@RequestParam String email, @RequestParam String password,@RequestParam String accountnumber)
@@ -102,29 +139,25 @@ public class AccountController {
             login.setUserName(email);
             login.setPassword(password);
             login.setRole("Customer");
-            int approve= accountService.register(login,checkAccount);
+            int approve= accountService.registerCustomer(login,checkAccount);
             if(approve==1) {
                 modelAndView.addObject("successMessage", "You created your login account successfully");
-//            modelAndView.addObject("login", new Login());
                 modelAndView.setViewName("home/register");
             }
             else if(approve==2)
             {
-                modelAndView.addObject("logMessage", "You already created login account, please ");
-//            modelAndView.addObject("login", new Login());
+                modelAndView.addObject("logMessage", "You already created login account, please login ");
                 modelAndView.setViewName("home/register");
             }
 
             else if(approve==4)
             {
                 modelAndView.addObject("emailMessage", "this email is already used please choose another");
-//            modelAndView.addObject("login", new Login());
                 modelAndView.setViewName("home/register");
             }
             else
             {
                 modelAndView.addObject("approvalMessage", "You don't get approval yet");
-//            modelAndView.addObject("login", new Login());
                 modelAndView.setViewName("home/register");
             }
         }
@@ -136,20 +169,14 @@ public class AccountController {
     public ModelAndView requestForm(@Valid Customer customer, BindingResult bindingResult, Model model,@RequestParam("file") MultipartFile file)
     {
         ModelAndView modelAndView = new ModelAndView();
-        System.out.println("customerrrr "+ customer.getFirstName());
         if (bindingResult.hasErrors()) {
-            System.out.println("errorrrrrrrrrr "+ bindingResult.toString());
             modelAndView.setViewName("NewCustomerRequestForm");
-//            return "NewCustomerRequestForm";
         }
         else {
-            System.out.println("successssssssssss "+ customer.getFirstName());
             accountService.requestNewAccount(customer,file);
             modelAndView.addObject("successMessage", "Customer has been registered successfully");
             modelAndView.addObject("customer", new Customer());
             modelAndView.setViewName("NewCustomerRequestForm");
-
-
         }
 
 
