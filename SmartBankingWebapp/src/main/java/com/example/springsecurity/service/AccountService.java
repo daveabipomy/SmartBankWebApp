@@ -15,7 +15,7 @@ public interface AccountService {
     public Account findById(long id);
     public Account findAccountByUserName(String userName);
     public Account updateBalance(Account account);
-	public int register(Login login,Account account);
+//	public int register(Login login,Account account);
 	public void save (Account account);
 	public List<Account> findOpenAcc();
 	public List<Account> findClosedAcc();

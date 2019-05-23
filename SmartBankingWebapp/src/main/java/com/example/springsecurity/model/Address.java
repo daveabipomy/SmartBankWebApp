@@ -9,18 +9,18 @@ import javax.persistence.Id;
 public class Address {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int addressId;
+    private int id;
     private String street;
     private String city;
     private String state;
     private String zip;
 
     public int getAddressId() {
-        return addressId;
+        return id;
     }
 
     public void setAddressId(int addressId) {
-        this.addressId = addressId;
+        this.id = addressId;
     }
 
     public String getStreet() {

@@ -152,7 +152,7 @@ public class ManagerController {
         account1.setClosingDate(LocalDate.now());
         account1.setStatus("closed");
         accountService.save(account1);
-        return "manager/approveAccount";
+        return "manager/activeAccount";
     }
 
     @RequestMapping(value = "/approveNewCustomer", method=RequestMethod.POST)
@@ -177,43 +177,57 @@ public class ManagerController {
 
         List<Account> listofAccountBycustom=customer.getAccounts();
         int flag=0;
-        for(Account a:listofAccountBycustom){
-            if(a.getAccountType().equals("accountType")){
-    flag++;
+
+        if(listofAccountBycustom!=null) {
+            for (Account a : listofAccountBycustom) {
+                if (a.getAccountType().equals("accountType")) {
+                    flag++;
+                }
             }
-        }
-        if(flag==0) {
 
-            Account account1 = new Account();
-            account1.setAccountType(accountType);
-            account1.setCustomer(customer);
-            account1.setOpeneingDate(LocalDate.now());
-            account1.setStatus("active");
+        }else {
+            if (flag == 0) {
 
-            String randomNumber = resize(String.valueOf(rand.nextInt(1000)), 3);
-            String customerId = resize(String.valueOf(customer.getId()), 3);
+                Account account1 = new Account();
+                account1.setAccountType(accountType);
+                account1.setCustomer(customer);
+                account1.setOpeneingDate(LocalDate.now());
+                account1.setStatus("active");
 
-            if (accountType.equals("checking")) {
-                account1.setAccountNumber(customerId + "01" + randomNumber);
+                String randomNumber = resize(String.valueOf(rand.nextInt(1000)), 3);
+                String customerId = resize(String.valueOf(customer.getId()), 3);
+
+                if (accountType.equals("checking")) {
+                    account1.setAccountNumber(customerId + "01" + randomNumber);
+                } else {
+                    account1.setAccountNumber(customerId + "02" + randomNumber);
+
+                }
+
+                account1.setBranch(m.getBranchm());
+                account1.setCard(null);
+                account1.setBalance(100);
+
+
+                accountService.save(account1);
+                return "manager/activeAccount";
+
             } else {
-                account1.setAccountNumber(customerId + "02" + randomNumber);
-
+                return "manager/approveAccount";
             }
 
-           account1.setBranch(m.getBranchm());
-            account1.setCard(null);
-
-
-
-            accountService.save(account1);
-        }else{
-            return "manager/approveAccount";
         }
-
-
         return "manager/approveAccount";
-    }
 
+    }
+    public String resize(String m,int size){
+
+        for(int i=m.length();i<=size;i++){
+            m='0'+m;
+        }
+        return m;
+
+    }
 
 
     @RequestMapping(value = "/approve/{id}/{firstName}",method= RequestMethod.GET)
@@ -221,17 +235,6 @@ public class ManagerController {
     {
         return  "/Approve";
     }
-
-
-//    @RequestMapping(value = "/customer/{id}/{accountType}",method=RequestMethod.POST)
-//    public String userDetail(@PathVariable("id") Long id,@PathVariable("accountType") String accountType, Model model){
-////        System.out.println(+id);
-////        System.out.println(accountType);
-//        Optional<Customer> customer = customerRepository.findById(id);
-//        model.addAttribute("customerdetail", customer);
-//        return "CustomerDetail";
-//    }
-
     @GetMapping("/empAccount")
     public String empAccount(){
         return "/manager/CreateEmpAcc";

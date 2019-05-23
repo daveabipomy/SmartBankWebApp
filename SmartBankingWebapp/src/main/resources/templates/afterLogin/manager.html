@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorator="layout/manager"
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorator="layout/managerHome"
       xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
 </head>
 <body>
 <div layout:fragment="content">
-    <h1>Manager home page</h1>
+<!--    <h1>Manager home page</h1>-->
     Hello <span th:utext="${HelloMessage}"></span>
 
     Logged in user: <b th:inline="text"  class="user"> [[${#httpServletRequest.remoteUser}]] </b>

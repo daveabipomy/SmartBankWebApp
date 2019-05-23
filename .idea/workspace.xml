@@ -2,19 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc865db5-e082-41a7-89e3-3bc6ff4a3a04" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/teller/deposit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/Controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/Controller/ManagerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/Controller/TellerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/Controller/TellerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/Controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/Controller/TransactionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/config/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/model/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/service/impl/AccountServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/service/impl/AccountServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/service/impl/TransactionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/service/impl/TransactionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/fragments/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/fragments/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/model/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/model/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/model/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/service/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/static/css/dropdown.css" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/static/css/dropdown.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/afterLogin/customer.html" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/afterLogin/customer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/afterLogin/manager.html" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/afterLogin/manager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/afterLogin/teller.html" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/afterLogin/teller.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/customer/checkingBalance.html" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/customer/checkingBalance.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/home/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/layout/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/layout/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/layout/manager.html" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/layout/manager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/layout/masterlayout.html" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/layout/masterlayout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/layout/teller.html" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/layout/teller.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/teller/transaction.html" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/teller/transaction.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/teller/viewStatement.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/manager/approveAccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/manager/approveAccount.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/manager/closeAccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/manager/closeAccount.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/manager/printCard.html" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/manager/printCard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/teller/viewStatement.html" beforeDir="false" afterPath="$PROJECT_DIR$/SmartBankingWebapp/src/main/resources/templates/teller/viewStatement.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,14 +33,27 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/SpringsecurityApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="51" />
-    <option name="y" value="27" />
+    <option name="x" value="50" />
+    <option name="y" value="25" />
     <option name="width" value="1285" />
-    <option name="height" value="743" />
+    <option name="height" value="745" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -106,15 +127,19 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -141,16 +166,18 @@
       <workItem from="1558454950384" duration="39000" />
       <workItem from="1558551233528" duration="23000" />
       <workItem from="1558551688131" duration="5000" />
+      <workItem from="1558624312948" duration="309000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67000" />
+    <option name="totallyTimeSpent" value="376000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="51" y="25" width="1549" height="875" extended-state="6" />
+    <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25615436" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25955734" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -183,11 +210,89 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/SmartBankingWebapp/src/main/java/com/example/springsecurity/SpringsecurityApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+  </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>SmartBankWebApp</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>11</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>

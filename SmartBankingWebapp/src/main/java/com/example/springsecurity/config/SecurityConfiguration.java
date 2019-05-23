@@ -48,7 +48,7 @@ public LogInServiceImp logInServiceImp;
                 .antMatchers("/afterLogin/manager/**","/manager/**","/registerTeller").hasAuthority("Manager")
                 .antMatchers("/afterLogin/manager/**","/manager/**","/transaction/**").hasAuthority("Manager")
                 .antMatchers("/afterLogin/customer/**","/customer/**","/transaction/**","/transaction/transferCustomer").hasAuthority("Customer")
-                .antMatchers("/afterLogin/teller/**","/teller/**","/transaction/**").hasAuthority("Teller")
+                .antMatchers("/afterLogin/teller/**","/teller/**","/transaction/**","/manager/generateStatement").hasAuthority("Teller")
                 .anyRequest().authenticated()
                 .and()
 

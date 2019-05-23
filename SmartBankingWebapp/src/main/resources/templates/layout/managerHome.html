@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="">
+        <meta name="author" content="O. Kalu">
+        <link rel="icon" href="favicon.ico">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+        <link rel="stylesheet" type="text/css" th:href="@{/css/dropdown.css}" />
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+    </head>
+    <body style="background-color:#D3D3D3;">
+        <nav class="navbar navbar-inverse navbar-expand-xl navbar-dark">
+            <div class="navbar-header d-flex col">
+                <a class="navbar-brand" href="#"><i class="fa fa-cube"></i>SMART <b>Bank</b></a>
+                <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collection of nav links, forms, and other content for toggling -->
+            <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+
+                <ul class="nav navbar-nav navbar-right ml-auto">
+                    <li class="nav-item active"><a href="#myModalStatement" data-toggle="modal" class="nav-link"><i class="fa fa-list"></i><span>Generate Statement</span></a></li>
+                    <li class="nav-item"><a href="/manager/checkBalance" class="nav-link"><i class="fa fa-money"></i><span>Check Balance</span></a></li>
+                    <li class="nav-item"><a href="/manager/transactionmanager" class="nav-link"><i class="fa fa-history"></i><span>Transaction</span></a></li>
+                    <li class="nav-item"><a href="/manager/printCard" class="nav-link"><i class="fa fa-credit-card"></i><span>Print Card</span></a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><i class="fa fa-university"></i>Accounts</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/manager/allAccounts" class="dropdown-item"><i class="fa fa-check"></i> Active Accounts</a></li>
+                            <li><a href="/manager/closedAccounts" class="dropdown-item"><i class="fa fa-window-close"></i> Closed Accounts</a></li>
+                            <li class="divider dropdown-divider"></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><i class="fa fa-user"></i>Customer</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/manager/Smartacc" class="dropdown-item"><i class="fa fa-check"></i> All Customers</a></li>
+                            <li><a href="/manager/approveNewCustomer" class="dropdown-item"><i class="fa fa-clock-o"></i> For Approval</a></li>
+
+                            <li class="divider dropdown-divider"></li>
+
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-item dropdown ">
+                        <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action  "> Hello: [[${#httpServletRequest.remoteUser}]]</a>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="/app-logout" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <div id="myModalR" class="modal fade">
+            <div class="modal-dialog modal-login">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="signup-form">
+                            <form action="/registerTeller" method="post">
+                                <h2>Register</h2>
+                                <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-xs-6"><input type="text" class="form-control" name="empid" placeholder="Employee Id" required="required"></div>
+                                        <!--                    <div class="col-xs-6"><input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required"></div>-->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="email" placeholder="Email" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-secondary btn-lg btn-block" >Register Now</button>
+                                </div>
+                                <span  th:utext="${failureMessage}"></span>
+                                <span  th:utext="${successMessage}"></span>
+                                <span  th:utext="${errorMessage}"></span>
+                                <span  th:utext="${logMessage}"></span>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="myModalStatement" class="modal fade">
+            <div class="modal-dialog modal-login">
+                <div class="modal-content">
+                    <div class="modal-body">
+
+                        <form action="/manager/generateStatement" method="post">
+                            <h3>Please Insert Account Number:</h3>
+                            <br>
+                            <!--                            <p class="hint-text">Create your account. It's free and only takes a minute.</p>-->
+                            <div class="form-group">
+                                <!--                                <div class="row">-->
+                                <div class="col-xs-6"><input type="text" class="form-control" name="accountNumber" placeholder="Account Number" required="required"></div>
+                                <!--                    <div class="col-xs-6"><input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required"></div>-->
+                                <!--                                </div>-->
+                                <!--                                <div class="col-xs-6"><input type="text" class="form-control" name="accountNumber" placeholder="Account Number" required="required"></div>-->
+                                <br>
+                                <div class="row">
+                                    &nbsp;&nbsp;&nbsp;          <div class="col-xs-6"><input type="date" class="form-control" width="48" name="startDate" placeholder="From" ></div> &nbsp;&nbsp;&nbsp;
+                                    <div class="col-xs-6"><input type="date" class="form-control" name="endDate" placeholder="To" ></div>
+                                    <!--                    <div class="col-xs-6"><input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required"></div>-->
+                                </div>
+                                <!--                                    </div>-->
+
+
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-secondary btn-lg btn-block" >Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="myModalCheckBalance" class="modal fade">
+            <div class="modal-dialog modal-login">
+                <div class="modal-content">
+                    <div class="modal-body">
+
+                        <form action="/manager/generateStatement" method="post">
+                            <h3>Please Insert Account Number:</h3>
+                            <br>                            <!--                            <p class="hint-text">Create your account. It's free and only takes a minute.</p>-->
+                            <div class="form-group">
+                                <!--                                <div class="row">-->
+                                <div class="col-xs-6"><input type="text" class="form-control" name="accountNumber" placeholder="Account Number" required="required"></div>
+                            </div>
+                            <!--                            <div class="form-group">-->
+                            <!--                                <button type="submit" class="btn btn-secondary btn-lg btn-block" >Submit</button>-->
+                            <!--                            </div>-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img  src="/images/manager.jpg" alt="Third slide" style="width:100%;height:100%">
+        <div class="container">
+            <th:block layout:fragment="content"></th:block>
+        </div>
+        <div  th:replace="fragments/footer :: footer"></div>
+
+    </body>
+</html>
