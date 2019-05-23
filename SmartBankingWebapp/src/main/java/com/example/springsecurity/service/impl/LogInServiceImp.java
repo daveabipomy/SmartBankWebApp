@@ -51,6 +51,11 @@ public class LogInServiceImp  implements UserDetailsService,LogInService{
             return userName;
     }
 
+    @Override
+    public Login findByUserName(String userName) {
+        return loginRepository.findByUserName(userName);
+    }
+
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {

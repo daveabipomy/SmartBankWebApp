@@ -27,6 +27,17 @@ public class Employee {
     private LocalDate DOB;
     private LocalDate joiningDate;
     public  int ssn;
+    @OneToOne(fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
+    private Login login;
+
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
 
     public Login getLogin() {
         return login;

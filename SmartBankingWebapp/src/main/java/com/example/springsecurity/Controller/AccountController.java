@@ -84,6 +84,7 @@ public class AccountController {
     public ModelAndView register(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("home/register");
+
         return modelAndView;
     }
 
