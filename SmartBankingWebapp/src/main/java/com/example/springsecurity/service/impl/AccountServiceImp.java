@@ -17,6 +17,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -95,6 +97,11 @@ public class AccountServiceImp implements AccountService {
         return 3;
     }
 
+    @Override
+    public void save(Account account) {
+        accountRepostitory.save(account);
+    }
+
     public Account checkAccount(String accountNumber)
     {
         Account getAccount=accountRepostitory.findByAccountNumber(accountNumber);
@@ -136,7 +143,7 @@ public class AccountServiceImp implements AccountService {
 
     @Override
     public Account findAccount(String accountNumber) {
-        return null;
+        return accountRepostitory.findByAccountNumber(accountNumber);
     }
 
     public Account updateBalance(Account account)
@@ -157,5 +164,38 @@ public class AccountServiceImp implements AccountService {
 
 
     }
+
+    public List<Account> findOpenAcc(){
+        List<Account> activeAcc=new ArrayList<>();
+        for(Account a:accountRepostitory.findAll()){
+            if(a.getStatus().equals("active")){
+                activeAcc.add(a);
+            }
+        }
+        return activeAcc;
+    }
+
+    @Override
+    public List<Account> findClosedAcc() {
+        List<Account> closeAcc=new ArrayList<>();
+        for(Account a:accountRepostitory.findAll()){
+            if(a.getStatus().equals("closed")){
+                closeAcc.add(a);
+            }
+        }
+        return closeAcc;
+    }
+
+    @Override
+    public List<Account> findAccountByCustomer(Customer customer) {
+        return (List<Account>) accountRepostitory.findAccountByCustomer(customer);
+    }
+
+    public Account findById(long id){
+        return accountRepostitory.findById(id).orElse(null);
+    }
+
+
+
 
 }

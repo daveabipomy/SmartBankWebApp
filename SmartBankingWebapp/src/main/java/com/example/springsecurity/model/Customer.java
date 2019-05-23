@@ -45,16 +45,50 @@ public class Customer {
 //    @NotNull(message = "User Name may not be null")
     private String photo;
 
-    @OneToMany(mappedBy = "customer",orphanRemoval = true,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
     @JsonManagedReference(value="customer-account")
     private List<Account> accounts;
 
     @OneToOne(fetch = FetchType.LAZY)
     @NotFound(action = NotFoundAction.IGNORE)
     private Login login;
+    @Transient
+    private String accNumber,accType,cardnumber,cardid;
 
     @OneToOne
     private Address address;
+
+    public String getCardnumber() {
+        return cardnumber;
+    }
+
+    public void setCardnumber(String cardnumber) {
+        this.cardnumber = cardnumber;
+    }
+
+    public String getCardid() {
+        return cardid;
+    }
+
+    public void setCardid(String cardid) {
+        this.cardid = cardid;
+    }
+
+    public String getAccNumber() {
+        return accNumber;
+    }
+
+    public void setAccNumber(String accNumber) {
+        this.accNumber = accNumber;
+    }
+
+    public String getAccType() {
+        return accType;
+    }
+
+    public void setAccType(String accType) {
+        this.accType = accType;
+    }
 
     public Long getId() {
         return Id;

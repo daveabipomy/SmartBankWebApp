@@ -28,6 +28,8 @@
 
 
 
+
+
 </head>
 <body>
 
@@ -37,24 +39,27 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-10">
-                        <h2> <b>SmartBank </b> Closed Accounts </h2>
+                        <h2> <b>SmartBank </b> Customers </h2>
+                    </div>
+                    <div class="col-sm-2">
+                        <a th:href="@{'/manager/acc'}"  th:onratechange="" class="btn btn btn-info">back</a></td>
                     </div>
 
-
                 </div>
-
             </div>
             <table class="table table-striped table-hover">
                 <thead>
                 <tr>
                     <th style="width: 5%">#</th>
-                    <th style="width: 14%">AccountNumber</th>
-                    <th style="width: 14%">Type</th>
-                    <th style="width: 14%">closed Date</th>
-
-                    <th style="width: 14%">Customer Number</th>
-                    <th style="width: 14%">Customer Name</th>
-                    <th style="width: 14%">Action</th>
+                    <th style="width: 14%">Photo</th>
+                    <th style="width: 14%">First Name</th>
+                    <th style="width: 14%">Last Name</th>
+                    <th style="width: 14%">SSN</th>
+                    <th style="width: 14%">Date of Birth</th>
+                    <th style="width: 14%">Email</th>
+                    <th style="width: 14%">Contact Phone</th>
+                    <th sstyle="width: 14%">Gender</th>
+                    <th sstyle="width: 14%">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -62,27 +67,26 @@
 
 
 
-                <tr th:each="acc,iterStat: ${account}">
+                <tr th:each="cust,iterStat: ${customer}">
                     <th scope="row" th:text="${iterStat.count}+'.'"></th>
-                    <td th:text="${acc.accountNumber}"></td>
-                    <td th:text="${acc.accountType}"></td>
-                    <td th:text="${acc.closingDate}"></td>
-
-                    <td th:text="${acc.customer.id}"></td>
-                    <td th:text="${acc.customer.firstName +' '+acc.customer.lastName}"></td>
-
-
-                    <!--   <td>
-                           <a th:href="@{'/manager/close/'+${acc.id}}" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Close</span></a>
-                       <td><a th:href="@{'/manager/close/'+${acc.id}}" th:name="edit" th:onratechange="" class="btn btn btn-info">edit</a></td>
+                    <td ><img alt="Image" th:src="${cust.photo}" width="50" height="50"/></td>
+                    <td th:text="${cust.firstName}"></td>
+                    <td th:text="${cust.lastName}"></td>
+                    <td th:text="${cust.ssn}"></td>
+                    <td th:text="${cust.dob}"></td>
+                    <td th:text="${cust.email}"></td>
+                    <td th:text="${cust.phone}"></td>
+                    <td th:text="${cust.sex}"></td>
 
 
-                       </td>-->
-                    <td><a th:href="@{'/manager/close/'+${acc.id}}" th:name="edit" th:onratechange="" class="btn btn btn-danger">close</a></td>
+                    <td><a th:href="@{'/manager/approveNewCustomer/'+${cust.id}}" th:name="edit" th:onratechange="" class="btn btn btn-info"  >edit</a></td>
+
 
 
 
                 </tr>
+
+
                 </tbody>
             </table>
             <div class="clearfix">
@@ -99,6 +103,8 @@
             </div>
         </div>
     </div>
+
+
     <!-- Edit Modal HTML -->
     <div id="addEmployeeModal" class="modal fade">
 

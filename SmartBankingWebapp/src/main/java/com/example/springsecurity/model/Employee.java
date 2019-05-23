@@ -1,5 +1,8 @@
 package com.example.springsecurity.model;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -14,6 +17,17 @@ public class Employee {
     private LocalDate DOB;
     private LocalDate joiningDate;
     public  int ssn;
+    @OneToOne(fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
+    private Login login;
+
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
 
     public int getEmpid() {
         return empid;

@@ -37,9 +37,8 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-10">
-                        <h2> <b>SmartBank </b> Closed Accounts </h2>
+                        <h2> <b>SmartBank </b> All Accounts </h2>
                     </div>
-
 
                 </div>
 
@@ -50,8 +49,8 @@
                     <th style="width: 5%">#</th>
                     <th style="width: 14%">AccountNumber</th>
                     <th style="width: 14%">Type</th>
-                    <th style="width: 14%">closed Date</th>
-
+                    <th style="width: 14%">Openning Date</th>
+                    <th style="width: 14%">Balance</th>
                     <th style="width: 14%">Customer Number</th>
                     <th style="width: 14%">Customer Name</th>
                     <th style="width: 14%">Action</th>
@@ -66,18 +65,18 @@
                     <th scope="row" th:text="${iterStat.count}+'.'"></th>
                     <td th:text="${acc.accountNumber}"></td>
                     <td th:text="${acc.accountType}"></td>
-                    <td th:text="${acc.closingDate}"></td>
-
+                    <td th:text="${acc.openeingDate}"></td>
+                    <td th:text="${acc.balance}"></td>
                     <td th:text="${acc.customer.id}"></td>
                     <td th:text="${acc.customer.firstName +' '+acc.customer.lastName}"></td>
 
 
-                    <!--   <td>
-                           <a th:href="@{'/manager/close/'+${acc.id}}" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Close</span></a>
-                       <td><a th:href="@{'/manager/close/'+${acc.id}}" th:name="edit" th:onratechange="" class="btn btn btn-info">edit</a></td>
+                 <!--   <td>
+                        <a th:href="@{'/manager/close/'+${acc.id}}" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Close</span></a>
+                    <td><a th:href="@{'/manager/close/'+${acc.id}}" th:name="edit" th:onratechange="" class="btn btn btn-info">edit</a></td>
 
 
-                       </td>-->
+                    </td>-->
                     <td><a th:href="@{'/manager/close/'+${acc.id}}" th:name="edit" th:onratechange="" class="btn btn btn-danger">close</a></td>
 
 
