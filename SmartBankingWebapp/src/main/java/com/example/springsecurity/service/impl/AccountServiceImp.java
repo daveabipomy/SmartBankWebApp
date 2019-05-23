@@ -60,6 +60,14 @@ public class AccountServiceImp implements AccountService {
         return session;
     }
 
+    @Override
+    public Account findAccountByUserName(String userName) {
+        Login login=loginRepository.findByUserName(userName);
+        Customer customer=customerRepository.findCustomerByLogin(login);
+        Account account=accountRepostitory.findAccountByCustomer(customer).get(0);
+        return account;
+    }
+
     public int registerTeller(Login login, Teller teller)
     {
         Login userName=checkEmail(login.getUserName());
@@ -169,6 +177,7 @@ public class AccountServiceImp implements AccountService {
     public Account findAccount(String accountNumber) {
         return accountRepostitory.findByAccountNumber(accountNumber);
     }
+
 
 
 

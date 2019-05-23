@@ -32,7 +32,7 @@ public class ATMController {
 
         if(account!= null && pin == 1234) {
             double preBalance = account.getBalance();
-            transactionService.withdraw(accountNumber,amount);
+            transactionService.withdrawATM(accountNumber,amount);
             return "Withdraw Successful!" + "\n" +
                     "Your Previous Balance is: " + preBalance + "\n" +
                     "Your Current Balance is: " + String.valueOf(accountService.findAccount(accountNumber).getBalance());
@@ -46,7 +46,7 @@ public class ATMController {
 
         if(account!= null && pin == 1234) {
             double preBalance = account.getBalance();
-            transactionService.deposit(accountNumber,amount);
+            transactionService.depositAtm(accountNumber,amount);
             return "Deposit Successful!" + "\n" +
                     "Your Previous Balance is: " + preBalance + "\n" +
                     "Your Current Balance is: " + String.valueOf(accountService.findAccount(accountNumber).getBalance());
@@ -60,7 +60,7 @@ public class ATMController {
 
         if(account!= null && pin == 1234) {
             double preBalance = account.getBalance();
-            transactionService.transfer(accountNumber,toaccountNumber,amount);
+            transactionService.transferATM(accountNumber,toaccountNumber,amount);
             return "$"+ amount + " transfered to Account No.: " + toaccountNumber + "\n" +
                     "Your Previous Balance is: " + preBalance + "\n" +
                     "Your Current Balance is: " + String.valueOf(accountService.findAccount(accountNumber).getBalance());

@@ -31,9 +31,6 @@ public class CustomerController {
         return "/customer/checkingBalance";
     }
 
-
-
-
     @RequestMapping(value={"/checkingBalance"}, method = RequestMethod.POST)
     public ModelAndView checkBalance(Model model,HttpServletRequest request,String accountType)
     {
@@ -54,11 +51,6 @@ public class CustomerController {
         return "/customer/transfer";
     }
 
-//    @GetMapping("/viewStatement")
-//    public String viewStatement(){
-//        return "/customer/viewStatement";
-//    }
-
     @GetMapping("/transaction")
     public String transaction(){
         return "/customer/transaction";
@@ -69,7 +61,6 @@ public class CustomerController {
             String username = request.getRemoteUser();
         ModelAndView mav=new ModelAndView();
         List<Transaction> transactions=transactionService.viewStatement(username);
-        System.out.println("sizeeeeeeeeeee "+transactions);
         mav.addObject("transactions", transactions);
         mav.setViewName("/customer/viewStatement");
         return mav;

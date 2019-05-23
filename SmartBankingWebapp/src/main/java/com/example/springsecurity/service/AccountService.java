@@ -10,6 +10,7 @@ public interface AccountService {
 //    public int accountAuthentication(String username, String password);
     public Customer requestNewAccount(Customer customer, MultipartFile file);
     public Account findAccount(String accountNumber);
+    public Account findAccountByUserName(String userName);
     public Account updateBalance(Account account);
 	public int registerCustomer(Login login,Account account);
 	public int registerTeller(Login login, Teller teller);

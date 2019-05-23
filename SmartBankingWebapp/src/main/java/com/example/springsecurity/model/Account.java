@@ -39,6 +39,7 @@ public class Account {
     @OneToMany(mappedBy = "account",cascade = CascadeType.REMOVE,orphanRemoval = true,fetch=FetchType.LAZY)
     @JsonManagedReference(value="transaction-account")
 //    @Column(name = "transaction",nullable = false)
+    @OrderBy("transactionDate DESC")
     private List<Transaction> transactions;
 
 
@@ -121,6 +122,7 @@ public class Account {
     public void setCard(Card card) {
         this.card = card;
     }
+
 
     public List<Transaction> getTransactions() {
         return transactions;

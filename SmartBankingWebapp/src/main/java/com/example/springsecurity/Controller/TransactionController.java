@@ -31,7 +31,9 @@ public class TransactionController {
 
     @RequestMapping(value = "/deposit", method = RequestMethod.POST)
     public ModelAndView deposit(@RequestParam("accountNumber") String accountNumber,
-                                @RequestParam("amount") double amount){
+                                @RequestParam("amount") double amount,HttpServletRequest request)
+    {
+        String username = request.getRemoteUser();
          Account account = accountService.findAccount(accountNumber);
          ModelAndView modelAndView = new ModelAndView();
          if(account == null){
@@ -43,7 +45,7 @@ public class TransactionController {
          }
          else{
              double preBalance = accountService.findAccount(accountNumber).getBalance();
-             transactionService.deposit(accountNumber,amount);
+             transactionService.deposit(accountNumber,amount,username);
              modelAndView.addObject("transactionmessage","Deposited Successfuly!");
              modelAndView.addObject("preBalance", preBalance);
              modelAndView.addObject("account", account);
@@ -63,7 +65,9 @@ public class TransactionController {
 
     @RequestMapping(value = "/withdraw", method = RequestMethod.POST)
     public ModelAndView withdraw(@RequestParam("waccountNumber") String accountNumber,
-                                 @RequestParam("wamount") double amount){
+                                 @RequestParam("wamount") double amount,HttpServletRequest request)
+    {
+        String username = request.getRemoteUser();
 
 
         Account account = accountService.findAccount(accountNumber);
@@ -80,7 +84,7 @@ public class TransactionController {
         }
         else{
             double preBalance = accountService.findAccount(accountNumber).getBalance();
-            transactionService.withdraw(accountNumber,amount);
+            transactionService.withdraw(accountNumber,amount,username);
             modelAndView.addObject("transactionmessage","Withdrawed Successfuly!");
             modelAndView.addObject("preBalance", preBalance);
             modelAndView.addObject("account", account);
@@ -101,9 +105,11 @@ public class TransactionController {
 
 
     @RequestMapping(value = "/transfer", method = RequestMethod.POST)
-    public ModelAndView withdraw(@RequestParam("taccountNumber") String accountNumber,
+    public ModelAndView transfer(@RequestParam("taccountNumber") String accountNumber,
                          @RequestParam("toaccountNumber") String toAccountNumber,
-                         @RequestParam("tamount") double amount){
+                         @RequestParam("tamount") double amount,HttpServletRequest request)
+    {
+        String username = request.getRemoteUser();
 
         Account account = accountService.findAccount(accountNumber);
         Account toaccount = accountService.findAccount(toAccountNumber);
@@ -124,7 +130,7 @@ public class TransactionController {
         else{
             double preBalance = accountService.findAccount(accountNumber).getBalance();
             double toPreBalance = accountService.findAccount(toAccountNumber).getBalance();
-            transactionService.transfer(accountNumber,toAccountNumber,amount);
+            transactionService.transfer(accountNumber,toAccountNumber,amount,username);
             modelAndView.addObject("transactionmessage","Transfered Successfuly!");
             modelAndView.addObject("preBalance", preBalance);
             modelAndView.addObject("account", account);
@@ -145,5 +151,57 @@ public class TransactionController {
         return  modelAndView;
 
     }
+
+
+
+//    @RequestMapping(value = "/transferCustomer", method = RequestMethod.POST)
+    @RequestMapping(value = "/transferCustomer", method = RequestMethod.POST)
+    public ModelAndView transferCustomer(@RequestParam("accountNumber") String accountNumber,
+                                 @RequestParam("amount") double amount,HttpServletRequest request)
+    {
+        String username = request.getRemoteUser();
+
+//        Account account = accountService.findAccount();
+        Account account=accountService.findAccountByUserName(username);
+        Account toaccount = accountService.findAccount(accountNumber);
+        ModelAndView modelAndView = new ModelAndView();
+        if(account == null){
+            modelAndView.addObject("transactionmessage","Account Doesn't Exist!");
+            modelAndView.setViewName("customer/transfer");
+        }else if(amount == 0){
+            modelAndView.addObject("transactionmessage","Insert Amount");
+            modelAndView.setViewName("customer/transfer");
+        }else if(account.getBalance() < amount){
+            modelAndView.addObject("transactionmessage","Insufficient Balance");
+            modelAndView.setViewName("customer/transfer");
+        }else if(toaccount == null){
+            modelAndView.addObject("tomessage","Account Doesn't Exist!");
+            modelAndView.setViewName("customer/transfer");
+        }
+        else{
+            double preBalance = accountService.findAccountByUserName(username).getBalance();
+            double toPreBalance = accountService.findAccount(accountNumber).getBalance();
+            transactionService.transfer(accountService.findAccountByUserName(username).getAccountNumber(),accountNumber,amount,username);
+            modelAndView.addObject("transactionmessage","Transfered Successfuly!");
+            modelAndView.addObject("preBalance", preBalance);
+            modelAndView.addObject("account", account);
+            modelAndView.addObject("accountType", account.getAccountType());
+            modelAndView.addObject("balance", account.getBalance());
+            modelAndView.addObject("firstName", account.getCustomer().getFirstName());
+            modelAndView.addObject("lastName", account.getCustomer().getLastName());
+            modelAndView.addObject("photo", account.getCustomer().getPhoto());
+
+            modelAndView.addObject("toaccountType", toaccount.getAccountType());
+            modelAndView.addObject("amount", amount);
+            modelAndView.addObject("tofirstName", toaccount.getCustomer().getFirstName());
+            modelAndView.addObject("tolastName", toaccount.getCustomer().getLastName());
+
+
+            modelAndView.setViewName("customer/transfer");
+        }
+        return  modelAndView;
+
+    }
+
 
 }
