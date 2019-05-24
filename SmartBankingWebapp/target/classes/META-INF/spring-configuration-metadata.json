@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "file",
+      "type": "com.example.springsecurity.config.FileStorageProperties",
+      "sourceType": "com.example.springsecurity.config.FileStorageProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "file.upload-dir",
+      "type": "java.lang.String",
+      "sourceType": "com.example.springsecurity.config.FileStorageProperties"
+    }
+  ],
+  "hints": []
+}
